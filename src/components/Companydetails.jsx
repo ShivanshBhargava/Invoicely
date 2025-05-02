@@ -15,7 +15,6 @@ export default function Cdetails({ companyDetails, onChange }) {
         }
     };
 
-    // Sync preview with logo1 field
     useEffect(() => {
         if (companyDetails.logo1) {
             setPreview(companyDetails.logo1);
@@ -48,7 +47,7 @@ export default function Cdetails({ companyDetails, onChange }) {
                     onChange={(e) => onChange("name1", e.target.value)}
                 />
 
-                {/* Logo Upload */}
+                
                 <Box w="full" mb="1.5rem">
                     <label htmlFor="logo-upload">
                         <Text style={{ color: "black", marginBottom: "0.5rem" }}>Logo</Text>
@@ -86,7 +85,6 @@ export default function Cdetails({ companyDetails, onChange }) {
                     />
                 </Box>
 
-                {/* Address fields */}
                 <InputField
                     type="text"
                     text="Address"
