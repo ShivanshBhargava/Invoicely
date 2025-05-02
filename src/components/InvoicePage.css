@@ -26,71 +26,25 @@ body{
 }
 
 .Preview{
-    height:auto;
+    margin-top: 2rem;
+    border-radius: 0rem;
+    /* width: fit-content; */
+    height: fit-content;
+    max-width: 100%;
+    display:flex;
+    justify-content: center;
+    max-height: 100%;
     flex:1;
-    display: flex;
-    justify-content: space-around;
+
+
 }
 
 .preview{
-    height:100vh;
-    border: 1px dashed rgb(214, 214, 214);
-    background: rgb(255, 255, 255);
-    width:50vw;
-}
-
-.Logo{
-    background: rgb(255, 255, 255);
-    display:flex;
-    justify-content: flex-start;
-    padding:2rem;
-}
-
-.profile-picture {
-    opacity: 0.75;
-    height: 3rem;
-    width: 3rem;
-    position: relative;
-    overflow: hidden;
-  
-    /* default image */
-    background: url('https://qph.cf2.quoracdn.net/main-qimg-f32f85d21d59a5540948c3bfbce52e68');
-    border:2px solid gray;
-    border-radius: 50%;
+    /* height:auto; */
+    /* min-height: 80vh; */
     
-  
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: 0 8px 6px -6px black;
-  }
-
-  .file-uploader {
-    /* make it invisible */
-    opacity: 0;
-    /* make it take the full height and width of the parent container */
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-    /* make it absolute */
-    position: absolute;
-    top: 0%;
-    left: 0%;
-  }
-
-  .upload-icon {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* initial icon state */
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    color: #ccc;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: #bbb;
-  }
-
-  .profile-picture:hover .upload-icon {
-    opacity: 0.5;
-  }
+    border: 1px dashed  rgb(214, 214, 214);
+    height: auto;
+    min-height: 0;
+    max-height: none;
+}

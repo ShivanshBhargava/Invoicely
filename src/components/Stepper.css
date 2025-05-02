@@ -120,7 +120,7 @@
     font-size: 0.875rem;
     font-weight: 600;
     color:white;
-    background-color: black;
+    background-color: transparent;
   }
   
   .step-connector {
@@ -144,6 +144,6 @@
   .check-icon {
     height: 1rem;
     width: 1rem;
-    background-color: #00d8ff ;
+    background-color: transparent ;
     color:rgb(255, 255, 255);
   }

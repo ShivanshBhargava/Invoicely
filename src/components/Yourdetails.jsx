@@ -1,45 +1,46 @@
 import React from 'react'
 import {useState} from "react"
 import "./InvoicePage.css"
-import InputField from './Inputfield'
+import InputField from './Ifield'
 import { Box, Field, Input, Image, defineStyle, Flex, Text} from "@chakra-ui/react"
 
-export default function Ydetails(){
-    const [preview, setPreview] = useState(null);
+export default function Ydetails({ yourDetails, onChange }) {
+    const handleLogoChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const previewUrl = URL.createObjectURL(file);
+            onChange("logo", previewUrl);
+        }
+    };
 
-  const handleLogoChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setPreview(URL.createObjectURL(file));
-    }
-  };
     return (
-    <>
-        {/* Your Details */}
-        <div className="Ydetails" style={{background:"white", padding:"1.7rem"}}>
-                    <h4 style={{color:"black", background:"white", fontSize:"1.7rem", fontWeight:"700"}}>Your Details*</h4>
-                    <div style={{padding:"1rem 2rem 1rem 2rem"}}>
+        <div className="Ydetails" style={{ background: "white", padding: "1.7rem"}}>
+            <h4 style={{ color: "black", fontSize: "1.7rem", fontWeight: "700" }}>Your Details*</h4>
+            <div style={{ padding: "1rem 2rem" }}>
+                <InputField
+                    type="email"
+                    text="Email"
+                    placeholder="eg. jhondoe@company.com"
+                    value={yourDetails.email}
+                    onChange={(e) => onChange("email", e.target.value)}
+                />
+                <p style={{ fontSize: "0.7rem" }}>*We will automatically fill the provided details.</p>
+            </div>
 
-                    {/* mail */}
+            <h6 style={{ color: "gray", fontWeight: "600" }}>Billing Details :</h6>
+            <div style={{ padding: "2rem" }}>
+                <InputField
+                    type="text"
+                    text="Your Name"
+                    placeholder="Shivansh Bhargava"
+                    value={yourDetails.name}
+                    onChange={(e) => onChange("name", e.target.value)}
+                />
 
-                    <InputField type="email" text="Email" placeholder="eg. jhondoe@company.com"/>
-
-                    <p style={{fontSize:"0.7rem"}}>*We will automatically fill the provided details.</p></div>
-                    {/* <br/> */}
-                    <h6 style={{color:"gray", fontWeight:"600"}}>Billing Details :</h6>
-                    <div style={{padding:"2rem"}}>
-                        {/* name input */}
-
-                        <InputField type="text" text="Your Name" placeholder="Shivansh Bhargava"/>
-
-                        {/* Logo */}
-                        <Field.Root isRequired>
-                        <Box w="full" mb="1.5rem">
-                            <Field.Label style={{ color: "black", marginBottom: "0.5rem", display: "block" }}>
-                            Logo
-                            </Field.Label>
-
-                            <label htmlFor="logo-upload">
+                <Field.Root isRequired>
+                    <Box w="full" mb="1.5rem">
+                        <Field.Label style={{ color: "black", marginBottom: "0.5rem" }}>Logo</Field.Label>
+                        <label htmlFor="logo-upload">
                             <Flex
                                 align="center"
                                 justify="center"
@@ -52,58 +53,50 @@ export default function Ydetails(){
                                 transition="0.2s"
                                 _hover={{ bg: "gray.50" }}
                             >
-                                {preview ? (
-                                <Image
-                                    src={preview}
-                                    alt="Logo Preview"
-                                    maxH="100px"
-                                    objectFit="contain"
-                                    borderRadius="md"
-                                />
+                                {yourDetails.logo ? (
+                                    <Image src={yourDetails.logo} alt="Logo Preview" maxH="100px" objectFit="contain" borderRadius="md" />
                                 ) : (
-                                <Text color="gray.500">Click to upload logo</Text>
+                                    <Text color="gray.500">Click to upload logo</Text>
                                 )}
                             </Flex>
-                            </label>
-
-                            <Input
+                        </label>
+                        <Input
                             id="logo-upload"
                             type="file"
                             accept="image/*"
                             onChange={handleLogoChange}
                             display="none"
-                            />
-                        </Box>
-                        </Field.Root>
-                        {/* Address input */}
+                        />
+                    </Box>
+                </Field.Root>
 
-                        <InputField type="text" text="Address" placeholder="221B Baker Street"/>
+                <InputField type="text" text="Address" placeholder="221B Baker Street"
+                    value={yourDetails.address}
+                    onChange={(e) => onChange("address", e.target.value)}
+                />
+                <InputField type="text" text="City" placeholder="London"
+                    value={yourDetails.city}
+                    onChange={(e) => onChange("city", e.target.value)}
+                />
+                <InputField type="text" text="State" placeholder="Greater London"
+                    value={yourDetails.state}
+                    onChange={(e) => onChange("state", e.target.value)}
+                />
+                <InputField type="text" text="Zip" placeholder="NW1 6XE"
+                    value={yourDetails.zip}
+                    onChange={(e) => onChange("zip", e.target.value)}
+                />
+                <InputField type="text" text="Country" placeholder="UK"
+                    value={yourDetails.country}
+                    onChange={(e) => onChange("country", e.target.value)}
+                />
+                <InputField type="text" text="Tax ID" placeholder="912-34-5678"
+                    value={yourDetails.taxId}
+                    onChange={(e) => onChange("taxId", e.target.value)}
+                />
+            </div>
 
-                        {/* city input */}
-                        
-                        <InputField type="text" text="City" placeholder="London"/>
-
-                        {/* state input */}
-                        
-                        <InputField type="text" text="State" placeholder="Greater London"/>
-
-                        {/* zip */}
-                        
-                        <InputField type="text" text="Zip" placeholder="NW1 6XE"/>
-
-                        {/* country */}
-                        
-                        <InputField type="text" text="Country" placeholder="UK"/>
-
-                        {/* tax id */}
-
-                        <InputField type="text" text="Tax ID" placeholder="912-34-5678"/>
-
-                    </div>
-
-                    <hr style={{border: "none",borderTop: "1.5px dashed #1082d9", marginTop:"-2rem"}} />
-
-                    
-                </div>
-    </>)
+            <hr style={{ border: "none", borderTop: "1.5px dashed #1082d9", marginTop: "-2rem" }} />
+        </div>
+    );
 }

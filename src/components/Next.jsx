@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react"
 
 export default function Next(){
   return (
-    <HStack wrap="wrap" gap="8">
+    <HStack wrap="wrap" gap="8" style={{marginTop:"-2.5rem"}}>
           <VStack key="lg">
             <IconButton
               aria-label="Search database"

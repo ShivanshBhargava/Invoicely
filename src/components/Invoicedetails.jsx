@@ -1,26 +1,26 @@
 "use client"
-import { Portal, Select, createListCollection } from "@chakra-ui/react"
+import { Portal, Select, createListCollection, Input } from "@chakra-ui/react"
 import React from 'react'
 import {useState} from "react"
 import "./InvoicePage.css"
-import InputField from './Inputfield'
-import { Box, Field, Input, Image, defineStyle, Flex, Text} from "@chakra-ui/react"
-import { FiChevronDown } from 'react-icons/fi';
+import InputField from './Ifield'
+import Dynamic from "./DynamicInput"
 
 import {
     HStack,
-    IconButton,
-    useSelectContext,
   } from "@chakra-ui/react"
-  import { RiForbidLine } from "react-icons/ri"
   import { groupBy } from "es-toolkit"
 
   
-export default function Idetails(){
+export default function Idetails({invoiceDetails, onChange}){
+
+    const handleItemsChange = (updatedItems) => {
+        onChange('items', updatedItems);
+      };
 
     return (
         <>
-        <div className="Ydetails" style={{background:"white", padding:"1.7rem"}}>
+        <div className="Idetails" style={{background:"white", padding:"1.7rem"}}>
             <h4 style={{color:"black", background:"white", fontSize:"1.7rem", fontWeight:"700"}}>Invoice Details*</h4>
             <div style={{padding:"1rem 2rem 1rem 2rem"}}>
             <div>
@@ -29,6 +29,8 @@ export default function Idetails(){
                 size="sm"
                 width="320px"
                 defaultValue={["IN"]}
+                value={[invoiceDetails.currency]}
+                onValueChange={(val) => onChange('currency', val.value[0])}
                 >
                 <Select.HiddenSelect />
                 <Select.Label>Currency</Select.Label>
@@ -62,8 +64,43 @@ export default function Idetails(){
                 </div>
                 <p style={{fontSize:"0.7rem"}}>*We will automatically fill the provided details.</p>
             </div>
+                        
+            <Dynamic items={invoiceDetails.items} onItemsChange={handleItemsChange} />
+            
+            <p style={{color:"gray", margin:"2rem 0rem 1rem 0rem", fontSize:"1rem", fontWeight:"600"}}>Note</p>
+            <Input
+            type="text"
+            value={invoiceDetails.note}
+            onChange={(e) => onChange('note', e.target.value)}
+            px={0}
+            required
+            placeholder="Add a note"
+            variant="unstyled"
+            borderBottom="1px dashed #40cbff"
+            borderRadius="0"
+            _focus={{ borderBottom: '1.5px dashed #fbae34', boxShadow: 'none' }}
+            />
 
+            <div>
+                <p style={{color:"gray", margin:"2rem 0rem 2rem 0rem", fontSize:"1rem", fontWeight:"600"}}>More Options</p>
+                <div style={{padding:"1rem 2rem 1rem 2rem"}}>
+                    <InputField type="text" 
+                    text="Discount" 
+                    placeholder="0"
+                    value={invoiceDetails.discount}
+                    onChange={(e) => onChange('discount', e.target.value)}
+                    />
+                    <InputField
+                        type="text"
+                        text="Taxes"
+                        placeholder="0%"
+                        value={invoiceDetails.taxes}
+                        onChange={(e) => onChange('taxes', e.target.value)}
+                    />
+                </div>
             </div>
+            </div>
+            <hr style={{border: "none",borderTop: "1.5px dashed #1082d9", margin:"-2rem 0rem 2rem 0rem"}} />
         </>
     )
 }
@@ -143,7 +180,7 @@ const countries = createListCollection({
         continent: "Asia",
       },
       {
-        valure: "EU",
+        value: "EU",
         label: "Euro",
         flag: <img src="https://cdn-icons-png.flaticon.com/128/14538/14538918.png" alt="AU" width={20} height={15} />,
         continent : "Europe"
