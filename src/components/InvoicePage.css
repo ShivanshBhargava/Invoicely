@@ -28,7 +28,6 @@ body{
 .Preview{
     margin-top: 2rem;
     border-radius: 0rem;
-    /* width: fit-content; */
     height: fit-content;
     max-width: 100%;
     display:flex;
@@ -40,8 +39,6 @@ body{
 }
 
 .preview{
-    /* height:auto; */
-    /* min-height: 80vh; */
     
     border: 1px dashed  rgb(214, 214, 214);
     height: auto;

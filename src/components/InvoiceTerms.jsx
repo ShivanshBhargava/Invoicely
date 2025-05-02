@@ -23,7 +23,6 @@ export default function Iterms({ invoiceTerms, onChange }) {
             </div>
 
             <div style={{padding:"2rem"}}>
-                {/* Invoice Number */}
                 <InputField
                     type="text"
                     text="Invoice Number"
@@ -32,7 +31,6 @@ export default function Iterms({ invoiceTerms, onChange }) {
                     onChange={handleChange('invoiceNumber')}
                 />
 
-                {/* Issue Date */}
                 <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", borderBottom:"1px dashed #40cbff"}}>
                     <p style={{fontSize:"0.9rem", fontWeight:"600", flex:"1"}}>Issue date</p>
                     <Input
@@ -49,7 +47,7 @@ export default function Iterms({ invoiceTerms, onChange }) {
                     <FaCalendarAlt/>
                 </div>
 
-                {/* Due Date */}
+                
                 <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", borderBottom:"1px dashed #40cbff"}}>
                     <p style={{fontSize:"0.9rem", fontWeight:"600", flex:"1"}}>Due Date</p>
                     <Input

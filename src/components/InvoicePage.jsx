@@ -106,7 +106,6 @@ export default function InvoicePage(){
         <div className="Page">
 
             <div className="Inputs">
-                {/* Logo Part */}
                 <div className='Logo'>
                 <img src={logo} style={{height:"5rem"}}></img>
                 <div style={{background:"white", lineHeight:"1.4rem", padding:"1rem"}}>
@@ -316,6 +315,11 @@ export default function InvoicePage(){
                             <div style={{display:"flex", width:"100%", marginTop:"0.5rem", justifyContent:"space-between"}}>
                                 <p style={{fontSize:"0.8rem", color:"gray", fontWeight:"700"}}>Account Name :</p>
                                 {paymentDetails.accountName ? <p style={{fontSize:"0.8rem", color:"black"}}>{paymentDetails.accountName}</p> : <p style={{width:"5rem", height: "0.8rem", background: "rgb(214, 214, 214)", borderRadius: "1rem", marginTop:"0.4rem"}}></p>}
+                            </div>
+
+                            <div style={{display:"flex", width:"100%", marginTop:"0.5rem", justifyContent:"space-between"}}>
+                                <p style={{fontSize:"0.8rem", color:"gray", fontWeight:"700"}}>Swift Code :</p>
+                                {paymentDetails.swiftCode ? <p style={{fontSize:"0.8rem", color:"black"}}>{paymentDetails.swiftCode}</p> : <p style={{width:"5rem", height: "0.8rem", background: "rgb(214, 214, 214)", borderRadius: "1rem", marginTop:"0.4rem"}}></p>}
                             </div>
 
                         </div>
