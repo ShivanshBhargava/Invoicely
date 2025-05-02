@@ -2,7 +2,6 @@ import React from 'react'
 import {useState, useEffect} from "react"
 import "./InvoicePage.css"
 import logo from "../assets/Logo.png"
-import { Box, Field, Input, Image, defineStyle, Flex, Text} from "@chakra-ui/react"
 import Next from "./Next"
 import Back from "./Back"
 import Stepper, { Step } from './Stepper';
@@ -12,7 +11,6 @@ import Idetails from './Invoicedetails'
 import Pdetails from "./PaymentDetails"
 import Iterms from './InvoiceTerms'
 import Download from './Download'
-import { sub } from 'motion/react-client'
 
 export default function InvoicePage(){
 
