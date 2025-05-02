@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, HStack } from "@chakra-ui/react"
 import { RiArrowRightLine, RiDownloadLine } from "react-icons/ri"
 
-export default function Download(){
+export default function Download({onClick}){
 
     return (
         <>
@@ -30,6 +30,8 @@ export default function Download(){
             }}
             onMouseOver={(e) => (e.currentTarget.style.background = "#ff9900")}
             onMouseOut={(e) => (e.currentTarget.style.background = "#fbae34")}
+
+            onClick={onClick}
             >
             <RiDownloadLine style={{ color: "white", fontSize: "1.6rem" , background:"transparent"}} />
             Download Invoice

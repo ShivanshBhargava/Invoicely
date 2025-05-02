@@ -1,14 +1,6 @@
 
-body{
-    background: aliceblue;
-    background: radial-gradient(circle, #767676 6%, transparent 6%);
-    background-size: 1em 1em;
-    opacity: 1;
-    box-sizing: border-box;
-    z-index: 1;
-}
 *{
-    background-color: white;
+    background-color: transparent;
 }
 
 .Page{
@@ -34,12 +26,17 @@ body{
     justify-content: center;
     max-height: 100%;
     flex:1;
+    background: aliceblue;
+    background: radial-gradient(circle, #767676 6%, transparent 6%);
+    background-size: 1em 1em;
+    opacity: 1;
+    box-sizing: border-box;
 
 
 }
 
 .preview{
-    
+    background-color: white;
     border: 1px dashed  rgb(214, 214, 214);
     height: auto;
     min-height: 0;

@@ -1,5 +1,5 @@
 import React from 'react'
-import {useState, useEffect} from "react"
+import {useState, useEffect, useRef} from "react"
 import "./InvoicePage.css"
 import logo from "../assets/Logo.png"
 import Next from "./Next"
@@ -11,6 +11,7 @@ import Idetails from './Invoicedetails'
 import Pdetails from "./PaymentDetails"
 import Iterms from './InvoiceTerms'
 import Download from './Download'
+import html2pdf from "html2pdf.js";
 
 export default function InvoicePage(){
 
@@ -100,6 +101,22 @@ export default function InvoicePage(){
       
       const amount = subtotal - discountAmount + taxAmount;
 
+  const invoiceRef = useRef();
+
+  const handleDownload = () => {
+    const element = invoiceRef.current;
+    const options = {
+      margin:       0.5,
+      filename:     'invoice.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2 },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().set(options).from(element).save();
+  };
+
+
     return (
         <>
 
@@ -151,12 +168,12 @@ export default function InvoicePage(){
                     />
                 </Step>
                 <Step>
-                    <Download/>
+                    <Download onClick={handleDownload}/>
                 </Step>
                 </Stepper>
             </div>
 
-            <div className="Preview">
+            <div className="Preview" ref={invoiceRef} id="invoice-preview">
                 <div className='preview' style={{ borderRadius:"1.1rem"}}>
                     <div style={{display:"flex", justifyContent:"space-around", color:"gray", padding:"1.5rem 0rem 1.5rem 0rem", alignItems:"center", background:"transparent"}}>
                         <div style={{flex:"3", marginLeft:"4rem", fontSize:"0.8rem"}}>
@@ -279,11 +296,12 @@ export default function InvoicePage(){
                         </>
                     ))}
 
-                        <div style={{padding:"0rem 0rem 0rem 4rem"}}>
+                        <div style={{padding:"0rem 0rem 0rem 0rem"}}>
                             <div style={{display:"flex"}}>
-                                <div style={{flex:"1", padding:"1rem 0rem 1rem 4rem"}}>
+                                <div style={{flex:"1", padding:"1rem 4rem 1rem 0rem"}}>
+                                {invoiceDetails.note ? <p style={{fontSize:"0.8rem", color:"gray"}}>{invoiceDetails.note}</p> : <p style={{width:"10rem", height: "1rem", background: "rgb(214, 214, 214)", borderRadius: "1rem", marginTop:"0.5rem", marginLeft:"-8.2rem"}}></p>}
                                 </div>
-                                <div style={{ padding:"1rem 0rem 1rem 0rem", flex:"1", lineHeight:"2rem"}}>
+                                <div style={{ padding:"1rem 0rem 1rem 4rem", flex:"1", lineHeight:"2rem"}}>
                                     <div style={{fontSize:"0.9rem", color:"black", display:"flex", justifyContent:"space-between", alignItems:"end"}}>
                                         <div>Subtotal</div>
                                         <div>{currencyMap[invoiceDetails.currency]?.symbol}{subtotal.toFixed(2)}</div>
