@@ -299,7 +299,7 @@ export default function InvoicePage(){
                         <div style={{padding:"0rem 0rem 0rem 0rem"}}>
                             <div style={{display:"flex"}}>
                                 <div style={{flex:"1", padding:"1rem 4rem 1rem 0rem"}}>
-                                {invoiceDetails.note ? <p style={{fontSize:"0.8rem", color:"gray"}}>{invoiceDetails.note}</p> : <p style={{width:"10rem", height: "1rem", background: "rgb(214, 214, 214)", borderRadius: "1rem", marginTop:"0.5rem", marginLeft:"-8.2rem"}}></p>}
+                                {invoiceDetails.note ? <p style={{fontSize:"0.8rem", color:"gray"}}>{invoiceDetails.note}</p> : <p style={{width:"10rem", height: "1rem", background: "rgb(214, 214, 214)", borderRadius: "1rem", marginTop:"0.5rem"}}></p>}
                                 </div>
                                 <div style={{ padding:"1rem 0rem 1rem 4rem", flex:"1", lineHeight:"2rem"}}>
                                     <div style={{fontSize:"0.9rem", color:"black", display:"flex", justifyContent:"space-between", alignItems:"end"}}>
